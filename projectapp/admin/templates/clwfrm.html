@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{{ size }}
+
+<h2 align="center">MY LOGIN </h2>
+<form action="{{url_for('bpadmin.submitam')}}" method='POST' >
+
+    <input type='text' class='form-control' name='username'><br>
+    <label>Where did you hear from us</label>
+    <input type='checkbox' class='form-control' name='media' value='twitter'><br>
+    <input type='checkbox' class='form-control' name='media' value='google'><br>
+    <input type='checkbox' class='form-control' name='media' value='facebook'><br>
+
+    <button type='submit'>submit it </button>
+</form>
+
+{% endblock %}

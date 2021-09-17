@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="description" content="Export, Import ; car shipping from USA OR CANADA. New Car exporter, sales ; used auto auction - Insurance, Salvage; Clean Car Auction." />
+  <meta name="keywords" content="Export cars from usa, export cars usa, usa car export, export cars, car export,  export usa, car, car shipping from usa  " />
+
+
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+
+	<!--bootstrap stylesheets-->
+	<link href="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+
+	<link href="{{ url_for('bpadmin.static',filename='fontawesome/css/all.css') }}" rel="stylesheet" type="text/css">
+
+	
+	<link href="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/animate.css') }}" rel="stylesheet" type="text/css">
+	
+	
+	<title>T.inc Imports</title>
+	<style type="text/css">
+	body{
+		box-sizing: border-box;
+		background-color: #ffff;
+		font-family: helvetica;
+	}
+	h1,h2,h3,h4,h5,h6,p{
+		text-transform: capitalize;
+		color: black;
+	}
+	span{
+		color: white;
+		font-family: helvetica;
+		font-size: 20px;
+	}
+
+	#footer{
+		color: white;
+		font-family: helvetica;
+		font-size: 15px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<!--container--><div class="container-fluid">
+	<!--nav-->
+		<div class="row">
+			<div class="col-md-12" >
+				<nav class ="navbar navbar-expand-md navbar-light bg-light mr-2">
+					<button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navt">MENU
+					</button>
+				    <div align="center" class="collapse navbar-collapse sticky-top ml-3" style="position:fixed; background-color:skyblue; width:100%; padding:10px; top:0px; " id="navt"  >
+				      <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-between">
+				        <li class="nav-item  ml-5">
+				          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000">Home</a>
+				        </li>
+								<li class ="nav-item  ml-5">
+									<a class ="nav-link" href="#"> Services </a>
+									</li>
+									<li class ="nav-item  ml-5">
+									<a class ="nav-link" href ="#"> About Us</a>
+									</li>
+									
+									<li class ="nav-item  ml-5">
+									<a class ="nav-link" href ="http://127.0.0.1:5000/shipping"> Shipping  </a>
+									</li>
+									<li class ="nav-item  ml-5">
+									<a class ="nav-link" href ="http://127.0.0.1:5000/explore"> Explore Inventory</a>
+									</li>
+										<li class ="nav-item  ml-5">
+											<div>
+												<p align="center">{{ session.get('user') }} </p>
+											  </div>
+									</li>
+										<li class ="nav-item  ml-5">
+									<a class ="nav-link btn"  href="/register">Register  </a>
+									</li>
+									
+									{% if session.get('user')==None %}
+										<li class ="nav-item ml-5">
+									<a class ="nav-link btn"  href="/login"> Login </a>
+									</li>
+									{% endif %}
+									
+									<li class ="nav-item ml-5">
+										<a class ="nav-link btn"  href="{{ url_for('bpuser.signout') }}"> Log Out </a>
+										</li>
+				        </li>  
+				      </ul>
+				    </div>
+				  </div>
+				</nav>
+			</div>
+			
+		</div>
+	<!--endnav-->
+		<div align="center" class="col-md-12 mt-2 " style="position:;">
+				<a class ="navbar-brand" href ="#"> <img class="img-fluid mb-2" src="/admin/static/images/TEJ.gif " style="height:260px"></a>
+			</div>
+
+		
+	<!--display-->
+	<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner mt-1" >
+    <div class="carousel-item active">
+    		<a style="text-decoration: none;color:white; font-size: 20px;" href="#">
+      <img src="/admin/static/images/ship.jpg" class="d-block w-100" alt="shipping" style="height:600px">
+      <div class="carousel-caption d-none d-md-block">
+        <h4 style="color:white">SHIPPING</h4>
+        <p style="color:white">At Tej.inc, we offer various affordable shipment methods, geared towards the rapid shipment and delivery of customer vehicles </p> 
+      </div>
+    </div></a>
+    <div class="carousel-item" >
+   		<div>
+		    		<a style="text-decoration: none;color:white; font-size: 20px;" href="#">
+		      <img src="/admin/static/images/bently.jpg" class="d-block w-100" alt="auto" style="height:600px">
+    	 </div>
+      <div class="carousel-caption d-none d-md-block">
+        <h4 style="color:white">RELIABILITY</h4>
+        <p style="color:white">We make it our mission to sort out top quality vehicles to whithstand the harsh african terrain, our vehicles are thoroughly checked and serviced by qualified personnel before being listed on the site.</p>
+      </div><a/>
+    </div>
+    <div class="carousel-item">
+    		<a style="text-decoration: none;color:white; font-size: 20px;" href="#">
+      <img src="/admin/static/images/merc.png" class="d-block w-100" alt="..." style="height:600px">
+      <div class="carousel-caption d-none d-md-block">
+        <h4 style="color:white">DIVERSITY</h4>
+        <p style="color:white">Browse through our inventory of over a thousand vehicles for sale.</p>
+      </div><a/>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+	<!--enddisplay-->
+
+<div align="center" id="Custom search"  class="container  mt-5">
+	<h3>CUSTOM SEARCH</h3>
+</div>
+	<!--explore-->
+	<div class="row">
+	<div align="center" class="col-md-12 mt-5">
+		<!-- Large button groups (default and split) -->
+<!-- Small button groups (default and split) -->
+<div>
+
+<div class="btn-group">
+	<select class="btn btn-info btn-md" type="button">
+	  Manufacturer
+	  {% for manu in manufacturer%}
+	  <opion></opion>
+	  <option value='{{ manu[0] }}'> {{ manu[2] }}</option>
+	  {% endfor %}
+	</select>
+	
+  </div>
+  
+<div class="btn-group">
+  <select class="btn btn-info btn-md" type="button">
+    Model
+	{% for m in model %}
+	<opion></opion>
+	<option value='{{ m[0] }}'> {{ m[1] }}</option>
+	{% endfor %}
+  </select>
+  
+</div>
+<div class="btn-group">
+  <button class="btn btn-info btn-lg" type="button">
+    Year
+  </button>
+  <button type="button" class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    ...
+  </div>
+</div>
+<div class="btn-group">
+  <select class="btn btn-info btn-md" type="button">
+    
+	{% for t in t %}
+	<option value=''>TYPE</option>
+       <option value='{{ t[0] }}'>{{ t[1] }}</option>
+	   {% endfor %}
+  </select>
+  
+</div>
+<div class="btn-group">
+  <button class="btn btn-info btn-lg" type="button">
+    Price
+  </button>
+  <button type="button" class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    ...
+  </div>
+</div>
+ 
+
+
+
+</div>
+	</div> 	
+	<div  align="center"  style="width:60%" class="col-md-12 mt-5">
+		 <form class="d-flex mr-5">
+				        <input class="form-control me-2 " type="search" placeholder="Example:'Toyota Camry 2008' " aria-label="Search">
+				        <button class="btn btn-dark" type="submit">Search</button>
+	</form>
+	</div>
+	</div>			
+	<!--endexplore-->
+
+
+
+
+<div align="center" id="featured" class="container mt-5">
+	<h3>PREMIUM AUTOS</h3>
+</div>
+	<!--featured-->
+		<div class="row">
+			<div class="col-md-12">
+					<div class=" card-group mt-5">
+					  <div class="card ">
+					    <img src="/admin/static/auto/mo.jpg" class="card-img-top" alt="...">
+					    <div class="card-body ">
+					      <h5 class="card-title">Toyota Camry</h5>
+					       <ul>
+					      	<li>Year : 2009</li>
+					      	<li>Spec : LE</li>
+					      	<li>Vin : U708150</li>
+					      	<li>Price:&#8358; 2,500,000</li>
+					      </ul>
+					      <button class="btn btn-danger det">BUY NOW</button>
+					    </div>
+					  </div>&nbsp;
+					  <div class="card ">
+					    <img src="/admin/static/auto/ml.jpg" class="card-img-top" alt="...">
+					    <div class="card-body">
+					      <h5 class="card-title">Mercedes Benz Ml 350</h5>
+					      <ul>
+					      	<li>Year : 2008</li>
+					      	<li>Spec : AMG</li>
+					      	<li>Vin : U708150</li>
+					      	<li>Price:&#8358; 3,200,000</li>
+					      </ul>
+					      <button class="btn btn-danger det">BUY NOW</button>
+					    </div>
+					  </div>&nbsp;
+					  <div class="card ">
+					    <img src="/admin/static/auto/coro.jpg" class="card-img-top" alt="...">
+					    <div class="card-body">
+					      <h5 class="card-title">Toyota corolla</h5>
+					       <ul>
+					      <li>Year : 2012</li>
+					      	<li>Spec : SE</li>
+					      	<li>Vin : U708150</li>
+					      	<li>Price:&#8358; 3,800,000</li>
+					      </ul>
+					      <button class="btn btn-danger det">BUY NOW</button>
+					    </div>
+					  </div>&nbsp;
+</div>
+
+			<!--endcol--></div>
+		</div>
+
+
+	<!--featured-->
+		<div class="row">
+			<div class="col-md-12">
+					<div class=" card-group mt-3">
+					  <div class="card ">
+					    <img src="/admin/static/auto/acc.jpg" class="card-img-top" alt="...">
+					    <div class="card-body ">
+					      <h5 class="card-title">Honda Accord</h5>
+					       <ul>
+					      	<li>Year : 2016</li>
+					      	<li>Spec : LE</li>
+					      	<li>Vin : U708150</li>
+					      	<li>Price:&#8358; 6,500,000</li>
+					      </ul>
+					      <button class="btn btn-danger det">BUY NOW</button>
+					    </div>
+					  </div>&nbsp;
+					  <div class="card ">
+					    <img src="/admin/static/auto/sie.jpg" class="card-img-top" alt="...">
+					    <div class="card-body">
+					      <h5 class="card-title">Toyota Sienna</h5>
+					      <ul>
+					      	<li>Year : 2008</li>
+					      	<li>Spec : LE</li>
+					      	<li>Vin : U708150</li>
+					      	<li>Price:&#8358; 2,950,000</li>
+					      </ul>
+					      <button class="btn btn-danger det">BUY NOW</button>
+					    </div>
+					  </div>&nbsp;
+					  <div class="card ">
+					    <img src="/admin/static/auto/c300.jpg" class="card-img-top" alt="...">
+					    <div class="card-body">
+					      <h5 class="card-title">Mercedes Benz C300</h5>
+					       <ul>
+					      <li>Year : 2013</li>
+					      	<li>Spec : AMG</li>
+					      	<li>Vin : U708150</li>
+					      	<li>Price:&#8358; 5,800,000</li>
+					      </ul>
+					      <button class="btn btn-danger det">BUY NOW</button>
+					    </div>
+					  </div>&nbsp;
+</div>
+
+			<!--endcol--></div>
+		</div>
+	<!--endfeatured-->
+
+	<!--banner-->
+		<div class="row  mt-5">
+			<div class="col-md-12">
+				<img class="img-fluid mt-3" src=/admin/static/images/banner.gif /style="height: 350px; width: 100%">
+			</div>
+		</div>
+	<!--endbanner-->
+<div class="row mt-5">
+	<div class="col-md-12">
+		<div align="center">
+				<a href="/explore" class="btn btn-info btn-lg">BROWSE INVENTORY</a>
+		</div>
+	</div>
+</div>
+
+
+<!--footer-->
+<div class="bg-info mt-5" id="footer">
+	<div class="container row  ml-5">
+		<div class="container col-md-6 mt-2" >
+			<p style="color:white">JOIN TEJ.INC<br>Recieve newsletters about prices,driving tips and much more...</p>
+		</div>
+			<div class="col-md-6 mt-2">
+			<div class="input-group mb-3">
+					  <input type="email" class="form-control" placeholder="Email Address" id="newslettermail"><span>
+						  <button class="btn btn-dark">Sign Up</button>
+					  </span>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-3 ml-5">
+		<div class="col-md-12">
+			<table  style="width:100%">
+		<tr>
+		  <th scope="row">ABOUT US</th>
+		  <td>TERMS & CONDITIONS</td>
+		  <td></td>
+		  <td><i class="fab fa-facebook fa-2x">&nbsp;<span>@T.INC IMPORTS</span></i></td>
+		</tr>
+		<tr>
+		  <th scope="row">CONTACT US</th>
+		  <td>PRIVACY POLICY</td>
+		  <td></td>
+		  <td><i class="fab fa-instagram fa-2x">&nbsp;<span>@T.INC IMPORTS</span></i></td>
+		</tr>
+		<tr>
+		  <th scope="row">OUR SERVICES</th>
+		  <td colspan="2"></td>
+		  <td><i class="fab fa-twitter fa-2x">&nbsp;<span>@T.INC IMPORTS</span></i></td>
+		   <td></td>
+		</tr>
+		 <tr>
+		  <th scope="row">BLOG</th>
+		  <td colspan="2"></td>
+		  <td><i class="fab fa-youtube fa-2x">&nbsp;<span>@T.INC IMPORTS</span></i></td>
+		   <td></td>
+		</tr>
+	</table>
+		</div>
+	</div>
+	<div class="row mt-4">
+		<div class="col-md-12 mt-5" >
+			<p align="center" style="color:white">&copy; 2021 Tej.Inc Imports.All rights reserved</p>
+		</div>
+	</div>
+	</div>
+	<!--endfooter-->
+	
+	
+	
+	
+	<!-- Modalsinup -->
+	<div class="modal fade" id="reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">SIGN UP</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			  <form>
+				<div class="form group">
+					<label>First Name</label>
+					<input type="text" name="fname" class="form-control">
+					</div>
+	
+				   <div class="form group">
+					<label>Last Name</label>
+					<input type="text" name="lname" class="form-control">
+					</div>
+	
+					   <div class="form group">
+					<label>E-mail Address</label>
+					<input type="email" name="mail" class="form-control">
+					</div>
+	
+					<div class="form group">
+					<label>Address</label>
+					<input type="text" name="homeadd" class="form-control">
+					</div>
+	
+					 <div class="form group">
+					<label>Mobile Number</label>
+					<input type="number" name="phone" class="form-control">
+					</div>
+				   <div class="form group mt-4">
+					  <button type="button" class="btn btn-danger">Submit</button>
+					
+					</div>
+	
+	
+			   </form>
+		  </div>
+		  <div class="modal-footer">
+		   
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--endmodalsinup-->
+	
+	
+	<!-- Modalsinup -->
+	<div class="modal fade" id="log" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Login</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			  <form>
+					<div class="form group">
+					<label>E-mail Address</label>
+					<input type="email" name="mail" class="form-control">
+					</div>
+	
+					<div class="form group">
+					<label>Password</label>
+					<input type="text" name="userpwd" class="form-control">
+					</div>
+	
+				   <div class="form group mt-4">
+					  <button type="button" class="btn btn-danger">Login</button>
+					
+					</div>
+	
+	
+			   </form>
+		  </div>
+		  <div class="modal-footer">
+		   
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--endmodallogin-->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--endcontainer--></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<!--javascriptfiles. jquery, popper, bootstrap-->
+		<script type="text/javascript" src="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/jquery.min.js') }} "></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.det').click(function(){
+					alert('you go make am!')
+				})
+			})
+
+		</script>
+	
+		<script type="text/javascript" src="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/jquery.min.js') }} "></script>
+		
+		<script type="text/javascript" src="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/js/bootstrap.js') }}"></script>
+			
+	</body>
+	</html>
+

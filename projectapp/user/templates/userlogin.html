@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="description" content="Export, Import ; car shipping from USA OR CANADA. New Car exporter, sales ; used auto auction - Insurance, Salvage; Clean Car Auction." />
+  <meta name="keywords" content="Export cars from usa, export cars usa, usa car export, export cars, car export,  export usa, car, car shipping from usa  " />
+
+
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+
+	<!--bootstrap stylesheets-->
+	<link href="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+
+	<link href="{{ url_for('bpadmin.static',filename='fontawesome/css/all.css') }}" rel="stylesheet" type="text/css">
+
+	
+	<link href="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/animate.css') }}" rel="stylesheet" type="text/css">
+	
+	
+	<title>T.inc Imports</title>
+	<style type="text/css">
+	body{
+		box-sizing: border-box;
+		background-color: #ffff;
+		font-family: helvetica;
+	}
+	h1,h2,h3,h4,h5,h6,p{
+		text-transform: capitalize;
+		color: black;
+	}
+	span{
+		color: white;
+		font-family: helvetica;
+		font-size: 20px;
+	}
+
+	#footer{
+		color: white;
+		font-family: helvetica;
+		font-size: 15px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<!--container--><div class="container-fluid">
+	<!--nav-->
+		<div class="row">
+			<div class="col-md-12" >
+				<nav class ="navbar navbar-expand-md navbar-light bg-light mr-2">
+					<button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navt">MENU
+					</button>
+				    <div align="center" class="collapse navbar-collapse sticky-top ml-3" style="position:fixed; background-color:skyblue; width:100%; padding:10px; top:0px; " id="navt"  >
+				      <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-between">
+				        <li class="nav-item  ml-5">
+				          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000">Home</a>
+				        </li>
+								<li class ="nav-item  ml-5">
+									<a class ="nav-link" href="#"> Services </a>
+									</li>
+									<li class ="nav-item  ml-5">
+									<a class ="nav-link" href ="#"> About Us</a>
+									</li>
+									<li class ="nav-item  ml-5">
+									<a class ="nav-link" href ="http://127.0.0.1:5000/shipping"> Shipping  </a>
+									</li>
+									<li class ="nav-item  ml-5">
+									<a class ="nav-link" href ="http://127.0.0.1:5000/explore"> Explore Inventory</a>
+									</li>
+										<li class ="nav-item  ml-5">
+									<a class ="nav-link" href ="#"> Contact Us </a>
+									</li>
+										<li class ="nav-item  ml-5">
+									<a class ="nav-link btn"  href="/register">Register  </a>
+									</li>
+										<li class ="nav-item ml-5">
+									<a class ="nav-link btn"  href="/login"> Login </a>
+									</li>
+									<li class ="nav-item ml-5">
+										<a class ="nav-link btn"  href="{{ url_for('bpuser.signout') }}"> Log Out </a>
+										</li>
+				        </li>
+				      </ul>
+				    </div>
+				  </div>
+				</nav>
+			</div>
+			
+		</div>
+	<!--endnav-->
+		<div align="center" class="col-md-12 mt-2 mb-5" >
+				<a class ="navbar-brand" href ="#"> <img class="img-fluid mb-2" src="/admin/static/images/TEJ.gif " style="height:260px"></a>
+			</div>
+<div align="center">
+<h2 align="center"> USER LOGIN </h2>
+{% with m = get_flashed_messages() %}
+				{% if m %}
+<div class="alert alert-info">
+				{{m }}
+			</div>
+				{% endif %}
+				{% endwith %}
+			</div>
+
+<form class="form-control " action="{{ url_for('bpuser.ulogs') }}" method='POST' >
+	<p>Enter E-mail:</p>
+   <input type="email" name="themail" class="form-control"/>
+   <p>Enter Passowrd:</p>
+   <input type="password" name="thepassword" class="form-control"/>
+   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+   <button class="btn btn-danger"> Submit </button>
+</form>
+</div>
+
+<!--footer-->
+<div class="bg-info mt-5" id="footer" style="height:400px">
+	<div class="container row  ml-5">
+		<div class="container col-md-6 mt-2" >
+			<p style="color:white">JOIN TEJ.INC<br>Recieve newsletters about prices,driving tips and much more...</p>
+		</div>
+			<div class="col-md-6 mt-2">
+			<div class="input-group mb-3">
+					  <input type="email" class="form-control" placeholder="Email Address" id="newslettermail"><span>
+						  <button class="btn btn-dark">Sign Up</button>
+					  </span>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-3 ml-5">
+		<div class="col-md-12">
+			<table  style="width:100%">
+		<tr>
+		  <th scope="row">ABOUT US</th>
+		  <td>TERMS & CONDITIONS</td>
+		  <td></td>
+		  <td><i class="fab fa-facebook fa-2x">&nbsp;<span>@T.INC IMPORTS</span></i></td>
+		</tr>
+		<tr>
+		  <th scope="row">CONTACT US</th>
+		  <td>PRIVACY POLICY</td>
+		  <td></td>
+		  <td><i class="fab fa-instagram fa-2x">&nbsp;<span>@T.INC IMPORTS</span></i></td>
+		</tr>
+		<tr>
+		  <th scope="row">OUR SERVICES</th>
+		  <td colspan="2"></td>
+		  <td><i class="fab fa-twitter fa-2x">&nbsp;<span>@T.INC IMPORTS</span></i></td>
+		   <td></td>
+		</tr>
+		 <tr>
+		  <th scope="row">BLOG</th>
+		  <td colspan="2"></td>
+		  <td><i class="fab fa-youtube fa-2x">&nbsp;<span>@T.INC IMPORTS</span></i></td>
+		   <td></td>
+		</tr>
+	</table>
+		</div>
+	</div>
+	<div class="row mt-4">
+		<div class="col-md-12 mt-5" >
+			<p align="center" style="color:white">&copy; 2021 Tej.Inc Imports.All rights reserved</p>
+		</div>
+	</div>
+	</div>
+	<!--endfooter-->
+	
+	
+	
+	
+	<!-- Modalsinup -->
+	<div class="modal fade" id="reg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">SIGN UP</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			  <form>
+				<div class="form group">
+					<label>First Name</label>
+					<input type="text" name="fname" class="form-control">
+					</div>
+	
+				   <div class="form group">
+					<label>Last Name</label>
+					<input type="text" name="lname" class="form-control">
+					</div>
+	
+					   <div class="form group">
+					<label>E-mail Address</label>
+					<input type="email" name="mail" class="form-control">
+					</div>
+	
+					<div class="form group">
+					<label>Address</label>
+					<input type="text" name="homeadd" class="form-control">
+					</div>
+	
+					 <div class="form group">
+					<label>Mobile Number</label>
+					<input type="number" name="phone" class="form-control">
+					</div>
+				   <div class="form group mt-4">
+					  <button type="button" class="btn btn-danger">Submit</button>
+					
+					</div>
+	
+	
+			   </form>
+		  </div>
+		  <div class="modal-footer">
+		   
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--endmodalsinup-->
+	
+	
+	<!-- Modalsinup -->
+	<div class="modal fade" id="log" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Login</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			  <form>
+	
+					   <div class="form group">
+					<label>E-mail Address</label>
+					<input type="email" name="mail" class="form-control">
+					</div>
+	
+					<div class="form group">
+					<label>Password</label>
+					<input type="text" name="userpwd" class="form-control">
+					</div>
+	
+				   <div class="form group mt-4">
+					  <button type="button" class="btn btn-danger">Login</button>
+					
+					</div>
+	
+	
+			   </form>
+		  </div>
+		  <div class="modal-footer">
+		   
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!--endmodallogin-->
+	
+	
+	
+	
+
+	
+	
+	
+	
+	<!--endcontainer--></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		 <!--javascriptfiles. jquery, popper, bootstrap-->
+		 <script type="text/javascript" src="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/jquery.min.js') }} "></script>
+		 
+		 <script type="text/javascript" src="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/jquery.min.js') }} "></script>
+		 
+		 <script type="text/javascript" src="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/js/bootstrap.js') }}"></script>
+		   
+   </body>
+   </html>

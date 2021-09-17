@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="description" content="Export, Import ; car shipping from USA OR CANADA. New Car exporter, sales ; used auto auction - Insurance, Salvage; Clean Car Auction." />
+  <meta name="keywords" content="Export cars from usa, export cars usa, usa car export, export cars, car export,  export usa, car, car shipping from usa  " />
+
+
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+
+	<!--bootstrap stylesheets-->
+	<link href="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+
+	<link href="{{ url_for('bpadmin.static',filename='fontawesome/css/all.css') }}" rel="stylesheet" type="text/css">
+
+	
+	<link href="{{ url_for('bpadmin.static',filename='bootstrap-4.6.0/animate.css') }}" rel="stylesheet" type="text/css">
+	
+	
+	<title>T.inc Imports</title>
+	<style type="text/css">
+	body{
+		box-sizing: border-box;
+		background-color: #ffff;
+		font-family: helvetica;
+	}
+	h1,h2,h3,h4,h5,h6,p{
+		text-transform: capitalize;
+		color: black;
+	}
+	span{
+		color: white;
+		font-family: helvetica;
+		font-size: 20px;
+	}
+
+	#footer{
+		color: white;
+		font-family: helvetica;
+		font-size: 15px;
+	}
+	
+	</style>
+</head>
+<body>
+
+<!--container--><div class="container-fluid">
+	<!--nav-->
+		<div class="row">
+			<div class="col-md-12" >
+				<nav class ="navbar navbar-expand-md navbar-light bg-light mr-2">
+					<button class ="navbar-toggler" type ="button" data-toggle ="collapse" data-target ="#navt">MENU
+					</button>
+				    <div align="center" class="collapse navbar-collapse sticky-top ml-3" style="position:fixed; background-color:skyblue; width:100%; padding:10px; top:0px; " id="navt"  >
+				      <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-between">
+				       
+									<li class ="nav-item ml-5">
+										<a class ="nav-link btn"  href="{{ url_for('bpuser.signout') }}"> Log Out </a>
+										</li>
+				       
+				        </li>
+				      </ul>
+				    </div>
+				  </div>
+				</nav>
+			</div>
+			
+		</div>
+	<!--endnav-->
+		<div align="center" class="col-md-12 mt-2 " style="position:;">
+				<a class ="navbar-brand" href ="#"> <img class="img-fluid mb-2" src="/admin/static/images/TEJ.gif " style="height:260px"></a>
+			</div>
+
+		
+	<!--display-->
+			<div class="row">
+				<div align="center" class="col-md-12" style="background-color:black;">
+					<p align="center" style="color:white"> Admin Login </p>
+					<form action="/adminlogin" method="POST">
+						{{ ad.email.label }}
+						{{ ad.email(placeholder='Enter E-mail',class_='form-control') }}
+						{{ ad.password.label }}<br>
+						{{ ad.password(placeholder='Enter Password',class_='form-control') }}
+						
+						{{ ad.submit(class_='btn btn-danger') }}
+						{{ ad.csrf_token() }}
+					</form>
+
+				</div>
+				 
+			</div>
+	<!--endmodallogin-->
+	
+	
+	
+	
+	
+	
+	
+
+	
+	<!--endcontainer--></div>
+	
+	
+	
+	
+	
+	
+		<!--javascriptfiles. jquery, popper, bootstrap-->
+		<script type="text/javascript" src="static/bootstrap-4.6.0/jquery.min.js"></script>
+	
+		<script type="text/javascript" src="static/bootstrap-4.6.0/popper.min.js"></script>
+		
+		<script type="text/javascript" src="static/bootstrap-4.6.0/js/bootstrap.js"></script>
+			
+	</body>
+	</html>
+
